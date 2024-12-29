@@ -4,7 +4,7 @@ Param (
     $InputFile,
     [Parameter(Position=1)]
     [int]
-    $Quality = 23
+    $Quality = 28
 )
 
 $OutputDirectory = 'output'

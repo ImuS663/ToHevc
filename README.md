@@ -23,7 +23,7 @@ This script converts video files to HEVC format using CPU encoding.
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
-- `Quality`: CRF (Constant Rate Factor) value for encoding quality (optional, default is 23).
+- `Quality`: CRF (Constant Rate Factor) value for encoding quality (optional, default is 28).
 
 ### ToHevcCuda.ps1
 
@@ -34,7 +34,7 @@ This script converts video files to HEVC format using NVIDIA GPU encoding.
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
-- `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is 23).
+- `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is 28).
 
 ## Output
 
