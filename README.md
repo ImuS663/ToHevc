@@ -19,22 +19,26 @@ This project contains PowerShell scripts to convert video files to HEVC format u
 This script converts video files to HEVC format using CPU encoding.
 
 ```powershell
-.\ToHevc.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>]
+.\ToHevc.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>]
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
 - `Quality`: CRF (Constant Rate Factor) value for encoding quality (optional, default is 28).
+- `WidthSize`: Width of the output video (optional, default is -1 for original width).
+- `HeightSize`: Height of the output video (optional, default is -1 for original height).
 
 ### ToHevcCuda.ps1
 
 This script converts video files to HEVC format using NVIDIA GPU encoding.
 
 ```powershell
-.\ToHevcCuda.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>]
+.\ToHevcCuda.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>]
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
 - `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is 28).
+- `WidthSize`: Width of the output video (optional, default is -1 for original width).
+- `HeightSize`: Height of the output video (optional, default is -1 for original height).
 
 ## Output
 
@@ -45,13 +49,13 @@ Both scripts will create an `output` directory in the video directory and save t
 ### Using ToHevc.ps1
 
 ```powershell
-.\ToHevc.ps1 -InputFile "sample.mp4" -Quality 20
+.\ToHevc.ps1 -InputFile "sample.mp4" -Quality 20 -WidthSize 1920 -HeightSize 1080
 ```
 
 ### Using ToHevcCuda.ps1
 
 ```powershell
-.\ToHevcCuda.ps1 -InputFile "sample.mp4" -Quality 20
+.\ToHevcCuda.ps1 -InputFile "sample.mp4" -Quality 20 -WidthSize 1920 -HeightSize 1080
 ```
 
 ## License
