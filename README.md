@@ -38,7 +38,7 @@ This script converts video files to HEVC format using NVIDIA GPU encoding.
 
 ## Output
 
-Both scripts will create an `output` directory in the current working directory and save the converted video file there.
+Both scripts will create an `output` directory in the video directory and save the converted video file there.
 
 ## Examples
 
