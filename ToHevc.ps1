@@ -14,7 +14,7 @@ Param (
 )
 
 $OutputDirectory = $InputFile.Directory.FullName + '\output'
-$OutputFile = $OutputDirectory + '\' + $InputFile.Name
+$OutputFile = $OutputDirectory + '\' + $InputFile.BaseName + ".mp4"
 
 New-Item -ItemType Directory -Force $OutputDirectory -ErrorAction Stop
 
