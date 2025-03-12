@@ -16,10 +16,11 @@ Param (
     $NativeDecode = $false
 )
 
-$OutputDirectory = $InputFile.Directory.FullName + "\output"
-$OutputFile = $OutputDirectory + "\" + $InputFile.BaseName + ".mp4"
+$outputDirectory = $InputFile.Directory.FullName + "\output"
+$outputFile = $outputDirectory + "\" + $InputFile.BaseName + ".mp4"
+$inputFullName = $InputFile.FullName
 
-New-Item -ItemType Directory -Force $OutputDirectory -ErrorAction Stop
+New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
 
 $scaleType = $NativeDecode ? "scale" : "scale_cuda"
 
@@ -27,6 +28,6 @@ $scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf $scaleType=$($W
 
 $hwaccel = !$NativeDecode ? "-hwaccel cuda" : ""
 
-$ffmpegCommand = "ffmpeg $hwaccel -hwaccel_output_format cuda -i $($InputFile.FullName) -c:v hevc_nvenc $scale -preset:v p7 -tune:v uhq -rc:v vbr -cq:v $Quality -b:v 0 $OutputFile"
+$ffmpegCommand = "ffmpeg $hwaccel -hwaccel_output_format cuda -i $inputFullName -c:v hevc_nvenc $scale -preset:v p7 -tune:v uhq -rc:v vbr -cq:v $Quality -b:v 0 $outputFile"
 
 Invoke-Expression $ffmpegCommand

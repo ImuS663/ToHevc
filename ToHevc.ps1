@@ -13,13 +13,14 @@ Param (
     $HeightSize = -1
 )
 
-$OutputDirectory = $InputFile.Directory.FullName + "\output"
-$OutputFile = $OutputDirectory + "\" + $InputFile.BaseName + ".mp4"
+$outputDirectory = $InputFile.Directory.FullName + "\output"
+$outputFile = $outputDirectory + "\" + $InputFile.BaseName + ".mp4"
+$inputFullName = $InputFile.FullName
 
-New-Item -ItemType Directory -Force $OutputDirectory -ErrorAction Stop
+New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
 
 $scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf scale=$($WidthSize):$($HeightSize)" : ""
 
-$ffmpegCommand = "ffmpeg -i $($InputFile.FullName) -c:v libx265 $scale -preset:v slow -crf:v $Quality $OutputFile"
+$ffmpegCommand = "ffmpeg -i $inputFullName -c:v libx265 $scale -preset:v slow -crf:v $Quality $outputFile"
 
 Invoke-Expression $ffmpegCommand
