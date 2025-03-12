@@ -32,26 +32,14 @@ This script converts video files to HEVC format using CPU encoding.
 This script converts video files to HEVC format using NVIDIA GPU encoding.
 
 ```powershell
-.\ToHevcCuda.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>]
+.\ToHevcCuda.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>] [-NativeDecode]
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
 - `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is 28).
 - `WidthSize`: Width of the output video (optional, default is -1 for original width).
 - `HeightSize`: Height of the output video (optional, default is -1 for original height).
-
-### ToHevcCudaNatDecode.ps1
-
-This script converts video files to HEVC format using NVIDIA GPU encoding with native decoding.
-
-```powershell
-.\ToHevcCudaNatDecode.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>]
-```
-
-- `InputFile`: Path to the input video file (mandatory).
-- `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is 28).
-- `WidthSize`: Width of the output video (optional, default is -1 for original width).
-- `HeightSize`: Height of the output video (optional, default is -1 for original height).
+- `NativeDecode`: Use native decoding for input video (optional, default is false).
 
 ## Output
 
