@@ -21,6 +21,6 @@ New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
 
 $scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf scale=$($WidthSize):$($HeightSize)" : ""
 
-$ffmpegCommand = "ffmpeg -i $inputFullName -c:v libx265 $scale -preset:v slow -crf:v $Quality $outputFile"
+$ffmpegCommand = "ffmpeg -i `"$inputFullName`" -c:v libx265 $scale -preset:v slow -crf:v $Quality `"$outputFile`""
 
 Invoke-Expression $ffmpegCommand
