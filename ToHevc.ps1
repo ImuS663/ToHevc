@@ -10,7 +10,10 @@ Param (
     $WidthSize = -1,
     [Parameter(Position=3)]
     [int]
-    $HeightSize = -1
+    $HeightSize = -1,
+    [Parameter(Position=4)]
+    [switch]
+    $CopyDate = $false
 )
 
 $outputDirectory = $InputFile.Directory.FullName + "\output"
@@ -24,3 +27,9 @@ $scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf scale=$($WidthS
 $ffmpegCommand = "ffmpeg -i `"$inputFullName`" -c:v libx265 $scale -preset:v slow -crf:v $Quality `"$outputFile`""
 
 Invoke-Expression $ffmpegCommand
+
+if ($CopyDate) {
+    (Get-ChildItem $outputFile).CreationTime = $InputFile.CreationTime
+    (Get-ChildItem $outputFile).LastWriteTime = $InputFile.LastWriteTime
+    (Get-ChildItem $outputFile).LastAccessTime = $InputFile.LastAccessTime    
+}

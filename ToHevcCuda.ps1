@@ -13,7 +13,10 @@ Param (
     $HeightSize = -1,
     [Parameter(Position=4)]
     [switch]
-    $NativeDecode = $false
+    $NativeDecode = $false,
+    [Parameter(Position=5)]
+    [switch]
+    $CopyDate = $false
 )
 
 $outputDirectory = $InputFile.Directory.FullName + "\output"
@@ -31,3 +34,9 @@ $hwaccel = !$NativeDecode ? "-hwaccel cuda" : ""
 $ffmpegCommand = "ffmpeg $hwaccel -hwaccel_output_format cuda -i `"$inputFullName`" -c:v hevc_nvenc $scale -preset:v p7 -tune:v uhq -rc:v vbr -cq:v $Quality -b:v 0 `"$outputFile`""
 
 Invoke-Expression $ffmpegCommand
+
+if ($CopyDate) {
+    (Get-ChildItem $outputFile).CreationTime = $InputFile.CreationTime
+    (Get-ChildItem $outputFile).LastWriteTime = $InputFile.LastWriteTime
+    (Get-ChildItem $outputFile).LastAccessTime = $InputFile.LastAccessTime    
+}
