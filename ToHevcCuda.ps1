@@ -31,7 +31,7 @@ $scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf $scaleType=$($W
 
 $hwaccel = !$NativeDecode ? "-hwaccel cuda" : ""
 
-$ffmpegCommand = "ffmpeg $hwaccel -hwaccel_output_format cuda -i `"$inputFullName`" -c:v hevc_nvenc $scale -preset:v p7 -tune:v uhq -rc:v vbr -cq:v $Quality -b:v 0 `"$outputFile`""
+$ffmpegCommand = "ffmpeg $hwaccel -hwaccel_output_format cuda -i `"$inputFullName`" -c:v hevc_nvenc $scale -preset:v p7 -tune:v uhq -rc:v vbr -cq:v $Quality -b:v 0 -movflags +faststart `"$outputFile`""
 
 Invoke-Expression $ffmpegCommand
 
