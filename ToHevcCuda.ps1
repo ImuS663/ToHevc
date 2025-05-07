@@ -36,7 +36,7 @@ $ffmpegCommand = "ffmpeg $hwaccel -hwaccel_output_format cuda -i `"$inputFullNam
 Invoke-Expression $ffmpegCommand
 
 if ($CopyDate) {
-    (Get-ChildItem $outputFile).CreationTime = $InputFile.CreationTime
-    (Get-ChildItem $outputFile).LastWriteTime = $InputFile.LastWriteTime
-    (Get-ChildItem $outputFile).LastAccessTime = $InputFile.LastAccessTime    
+    (Get-ChildItem $("$outputFile")).CreationTime = $InputFile.CreationTime
+    (Get-ChildItem $("$outputFile")).LastWriteTime = $InputFile.LastWriteTime
+    (Get-ChildItem $("$outputFile")).LastAccessTime = $InputFile.LastAccessTime    
 }
