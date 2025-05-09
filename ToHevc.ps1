@@ -1,17 +1,17 @@
 Param (
-    [Parameter(Position=0, Mandatory=$true)]
+    [Parameter(Position = 0, Mandatory = $true)]
     [System.IO.FileInfo]
     $InputFile,
-    [Parameter(Position=1)]
+    [Parameter(Position = 1)]
     [int]
     $Quality = 28,
-    [Parameter(Position=2)]
+    [Parameter(Position = 2)]
     [int]
     $WidthSize = -1,
-    [Parameter(Position=3)]
+    [Parameter(Position = 3)]
     [int]
     $HeightSize = -1,
-    [Parameter(Position=4)]
+    [Parameter(Position = 4)]
     [switch]
     $CopyDate = $false
 )
@@ -31,5 +31,5 @@ Invoke-Expression $ffmpegCommand
 if ($CopyDate) {
     (Get-ChildItem $("$outputFile")).CreationTime = $InputFile.CreationTime
     (Get-ChildItem $("$outputFile")).LastWriteTime = $InputFile.LastWriteTime
-    (Get-ChildItem $("$outputFile")).LastAccessTime = $InputFile.LastAccessTime    
+    (Get-ChildItem $("$outputFile")).LastAccessTime = $InputFile.LastAccessTime
 }
