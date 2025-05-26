@@ -16,8 +16,8 @@ Param (
     $CopyDate = $false
 )
 
-$outputDirectory = $InputFile.Directory.FullName + "\output"
-$outputFile = $outputDirectory + "\" + $InputFile.BaseName + ".mp4"
+$outputDirectory = Join-Path $InputFile.Directory.FullName "output"
+$outputFile = Join-Path $outputDirectory "$($InputFile.BaseName).mp4"
 $inputFullName = $InputFile.FullName
 
 New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
