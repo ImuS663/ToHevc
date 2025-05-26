@@ -27,7 +27,7 @@ New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
 
 $scaleType = $NativeDecode ? "scale" : "scale_cuda"
 
-$scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf $scaleType=$($WidthSize):$($HeightSize)" : ""
+$scale = ($WidthSize -ne -1 -or $HeightSize -ne -1) ? "-vf $scaleType=$WidthSize`:$HeightSize" : ""
 
 $hwaccel = !$NativeDecode ? "-hwaccel cuda" : ""
 

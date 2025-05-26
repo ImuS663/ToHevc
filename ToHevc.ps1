@@ -22,7 +22,7 @@ $inputFullName = $InputFile.FullName
 
 New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
 
-$scale = !(($WidthSize -eq -1) -and ($HeightSize -eq -1)) ? "-vf scale=$($WidthSize):$($HeightSize)" : ""
+$scale = ($WidthSize -ne -1 -or $HeightSize -ne -1) ? "-vf scale=$WidthSize`:$HeightSize" : ""
 
 $ffmpegCommand = "ffmpeg -i `"$inputFullName`" -c:v libx265 $scale -preset:v slow -crf:v $Quality -c:a aac -movflags +faststart `"$outputFile`""
 
