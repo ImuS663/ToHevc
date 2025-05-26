@@ -29,7 +29,8 @@ $ffmpegCommand = "ffmpeg -i `"$inputFullName`" -c:v libx265 $scale -preset:v slo
 Invoke-Expression $ffmpegCommand
 
 if ($CopyDate) {
-    (Get-ChildItem $("$outputFile")).CreationTime = $InputFile.CreationTime
-    (Get-ChildItem $("$outputFile")).LastWriteTime = $InputFile.LastWriteTime
-    (Get-ChildItem $("$outputFile")).LastAccessTime = $InputFile.LastAccessTime
+    $outputItem = Get-ChildItem -LiteralPath $outputFile
+    $outputItem.CreationTime = $InputFile.CreationTime
+    $outputItem.LastWriteTime = $InputFile.LastWriteTime
+    $outputItem.LastAccessTime = $InputFile.LastAccessTime
 }
