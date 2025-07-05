@@ -23,11 +23,11 @@ This script converts video files to HEVC format using CPU encoding.
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
-- `Quality`: CRF (Constant Rate Factor) value for encoding quality (optional, default is 28).
-- `WidthSize`: Width of the output video (optional, default is -1 for original width).
-- `HeightSize`: Height of the output video (optional, default is -1 for original height).
-- `Lossless`: Enables lossless HEVC encoding (optional, default is false).
-- `CopyDate`: Copies the original file's creation and modification dates to the output file (optional, default is false).
+- `Quality`: CRF (Constant Rate Factor) value for encoding quality (optional, default is `28`).
+- `WidthSize`: Width of the output video (optional, default is `-1` for original width).
+- `HeightSize`: Height of the output video (optional, default is `-1` for original height).
+- `Lossless`: Enables lossless HEVC encoding (optional, default is `false`).
+- `CopyDate`: Copies the original file's creation and modification dates to the output file (optional, default is `false`).
 
 ### ToHevcCuda.ps1
 
@@ -38,12 +38,12 @@ This script converts video files to HEVC format using NVIDIA GPU encoding.
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
-- `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is 28).
-- `WidthSize`: Width of the output video (optional, default is -1 for original width).
-- `HeightSize`: Height of the output video (optional, default is -1 for original height).
-- `NativeDecode`: Use native decoding for input video (optional, default is false).
-- `Lossless`: Enables lossless HEVC encoding (optional, default is false).
-- `CopyDate`: Copies the original file's creation and modification dates to the output file (optional, default is false).
+- `Quality`: CQ (Constant Quality) value for encoding quality (optional, default is `28`).
+- `WidthSize`: Width of the output video (optional, default is `-1` for original width).
+- `HeightSize`: Height of the output video (optional, default is `-1` for original height).
+- `NativeDecode`: Use native decoding for input video (optional, default is `false`).
+- `Lossless`: Enables lossless HEVC encoding (optional, default is `false`).
+- `CopyDate`: Copies the original file's creation and modification dates to the output file (optional, default is `false`).
 
 ## Output
 
