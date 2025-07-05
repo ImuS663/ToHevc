@@ -19,20 +19,22 @@ This project contains PowerShell scripts to convert video files to HEVC format u
 This script converts video files to HEVC format using CPU encoding.
 
 ```powershell
-.\ToHevc.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>]
+.\ToHevc.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>] [-Lossless] [-CopyDate]
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
 - `Quality`: CRF (Constant Rate Factor) value for encoding quality (optional, default is 28).
 - `WidthSize`: Width of the output video (optional, default is -1 for original width).
 - `HeightSize`: Height of the output video (optional, default is -1 for original height).
+- `Lossless`: Enables lossless HEVC encoding (optional, default is false).
+- `CopyDate`: Copies the original file's creation and modification dates to the output file (optional, default is false).
 
 ### ToHevcCuda.ps1
 
 This script converts video files to HEVC format using NVIDIA GPU encoding.
 
 ```powershell
-.\ToHevcCuda.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>] [-NativeDecode]
+.\ToHevcCuda.ps1 -InputFile <path_to_input_file> [-Quality <quality_value>] [-WidthSize <width_value>] [-HeightSize <height_value>] [-NativeDecode] [-Lossless] [-CopyDate]
 ```
 
 - `InputFile`: Path to the input video file (mandatory).
@@ -40,6 +42,8 @@ This script converts video files to HEVC format using NVIDIA GPU encoding.
 - `WidthSize`: Width of the output video (optional, default is -1 for original width).
 - `HeightSize`: Height of the output video (optional, default is -1 for original height).
 - `NativeDecode`: Use native decoding for input video (optional, default is false).
+- `Lossless`: Enables lossless HEVC encoding (optional, default is false).
+- `CopyDate`: Copies the original file's creation and modification dates to the output file (optional, default is false).
 
 ## Output
 
