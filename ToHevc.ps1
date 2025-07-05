@@ -13,7 +13,10 @@ Param (
     $HeightSize = -1,
     [Parameter(Position = 4)]
     [switch]
-    $CopyDate = $false
+    $CopyDate = $false,
+    [Parameter(Position = 5)]
+    [switch]
+    $Lossless = $false
 )
 
 $outputDirectory = Join-Path $InputFile.Directory.FullName "output"
@@ -24,7 +27,9 @@ New-Item -ItemType Directory -Force $outputDirectory -ErrorAction Stop
 
 $scale = ($WidthSize -ne -1 -or $HeightSize -ne -1) ? "-vf scale=$WidthSize`:$HeightSize" : ""
 
-$ffmpegCommand = "ffmpeg -i `"$inputFullName`" -c:v libx265 $scale -preset:v slow -crf:v $Quality -c:a aac -movflags +faststart `"$outputFile`""
+$qualityStr = $Lossless ? "-x265-params lossless=1" : "-crf:v $Quality"
+
+$ffmpegCommand = "ffmpeg -i `"$inputFullName`" -c:v libx265 $scale -preset:v slow $qualityStr -c:a aac -movflags +faststart `"$outputFile`""
 
 Invoke-Expression $ffmpegCommand
 
